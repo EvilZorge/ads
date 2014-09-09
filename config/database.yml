@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  username: ads
+  password: 123
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: ads_development
+
+test:
+  <<: *default
+  database: ads_test
+
+production:
+  <<: *default
+  database: ads_production

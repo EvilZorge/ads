@@ -1,0 +1,15 @@
+= form_for [:admin,@user], html: { class: "form form-horizontal user"  } do |f|
+  .form-group
+    = f.label :email, :class => 'control-label'
+    .controls
+      = f.text_field :email, autofocus: true, :class => 'form-control'
+    = error_span(@user[:email])
+  .form-group
+    = f.label :role, :class => 'control-label'
+    .controls
+      = f.select :role, User.role.options, :class => 'form-control'
+    = error_span(@user[:role])
+  = f.submit nil, :class => 'btn btn-primary'
+  '
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_users_path, :class => 'btn'
+

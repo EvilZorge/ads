@@ -1,0 +1,71 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    title= content_for?(:title) ? yield(:title) : "Ads"
+    = csrf_meta_tags
+
+    /! Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+    = stylesheet_link_tag "application", :media => "all"
+    = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
+    = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
+    = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
+    = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
+    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+    = javascript_include_tag "application"
+
+
+
+  body
+    .navbar.navbar-default.navbar-static-top
+        .container
+          button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse"
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand href=root_url Ads
+          .navbar-collapse.collapse.navbar-responsive-collapse
+            ul.nav.navbar-nav
+              - if current_user
+                li= link_to 'Sign out', destroy_user_session_path, method: :delete
+                - if current_user.role.admin?
+                  li.dropdown
+                    a data-toggle="dropdown" href="#"  Profile
+                    ul.dropdown-menu aria-labelledby="dLabel" role="menu" 
+                        li= link_to "Profile's info", admin_user_path(current_user)
+                        li= link_to 'Edit your profile', edit_user_registration_path
+                  li.dropdown
+                    a data-toggle="dropdown" href="#"  Users panel
+                    ul.dropdown-menu aria-labelledby="dLabel" role="menu" 
+                        li= link_to 'Show all users', admin_users_path
+                        li= link_to 'New user', new_admin_user_path
+                  li.dropdown
+                    a data-toggle="dropdown" href="#"  Types panel
+                    ul.dropdown-menu aria-labelledby="dLabel" role="menu" 
+                        li= link_to 'Show all types', admin_types_path
+                        li= link_to 'New type', new_admin_type_path     
+                  li= link_to 'Advertisments panel', admin_advertisments_path 
+                - if current_user.role.user?
+                  li.dropdown
+                    a data-toggle="dropdown" href="#"  Profile
+                    ul.dropdown-menu aria-labelledby="dLabel" role="menu" 
+                        li= link_to "Profile's info", user_path(current_user)
+                        li= link_to 'Edit your profile', edit_user_registration_path
+              - else
+                li= link_to 'Sign in', new_user_session_path
+                li= link_to 'Sign up', new_user_registration_path
+              - if can? :create, Advertisment
+                li= link_to 'New advertisment', new_advertisment_path     
+
+    .container
+      .row
+        .col-lg-12
+          = bootstrap_flash
+          = yield
+   
+      footer
+        p &copy; Company 2014

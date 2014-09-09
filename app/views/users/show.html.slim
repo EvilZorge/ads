@@ -1,0 +1,35 @@
+- model_class = Advertisment
+div class="page-header"
+  h1= @user.email + ' advertisments' 
+div class='search'   
+  = render :partial => "search_form"  
+  
+table#myTable class="table table-striped"
+  thead
+    tr
+      th= model_class.human_attribute_name(:title)
+      th= model_class.human_attribute_name(:body)
+      th= model_class.human_attribute_name(:type_id)
+      th= model_class.human_attribute_name(:state)
+      th= model_class.human_attribute_name(:updated_at)
+      th=t '.actions', :default => t("helpers.actions")
+  tbody
+    - @advertisments.each do |advertisment| 
+      - if can? :read, advertisment 
+        tr
+          td= advertisment.title
+          td= advertisment.body
+          td= advertisment.type.name
+          td= advertisment.state
+          td=l advertisment.updated_at
+          td
+            = link_to t('.show', :default => t("helpers.links.show")), advertisment_path(advertisment), :class => 'btn btn-default btn-xs'
+            '
+            - if can? :change_state, advertisment
+              = link_to 'Set to moderation', change_state_advertisment_path(advertisment,state_status:'create'), method: :put, :class => 'btn btn-success btn-xs'
+            '  
+            - if can? :edit, advertisment
+              = link_to t('.edit', :default => t("helpers.links.edit")), edit_advertisment_path(advertisment), :class => 'btn btn-default btn-xs'
+            '
+            - if can? :destroy, advertisment
+              = link_to t('.destroy', :default => t("helpers.links.destroy")), advertisment_path(advertisment), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'

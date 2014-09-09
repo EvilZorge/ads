@@ -1,0 +1,55 @@
+- model_class = Advertisment
+div class="page-header"
+  h1=t '.title', :default => model_class.model_name.human.titleize
+
+p
+  strong= model_class.human_attribute_name(:title) + ':'
+  br
+  = @advertisment.title
+p
+  strong= model_class.human_attribute_name(:body) + ':'
+  br
+  = @advertisment.body
+p
+  strong= model_class.human_attribute_name(:user_id) + ':'
+  br
+  = @advertisment.user.email  
+p
+  strong= model_class.human_attribute_name(:type_id) + ':'
+  br
+  = @advertisment.type.name
+p
+  strong= model_class.human_attribute_name(:state) + ':'
+  br
+  = @advertisment.state   
+p
+  br
+    - @advertisment.ads_images.each do |f|
+      =' image_tag(f.photo.url(:medium))
+
+- if can? :edit, @advertisment
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_advertisment_path(@advertisment), :class => 'btn btn-default'
+'
+- if can? :destroy, @advertisment
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), advertisment_path(@advertisment), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+'
+- if current_user
+  - if current_user.role.admin?
+    - if can? :change_state, @advertisment 
+      button.btn.btn-warning data-target="#myModal" data-toggle="modal" 
+        | Reject
+      #myModal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" 
+        .modal-dialog
+          .modal-content
+            = form_for @advertisment do |f|
+              .modal-header
+                button.close data-dismiss="modal" type="button" 
+                  span aria-hidden="true"  &times;
+                  span.sr-only Close
+                h4#myModalLabel.modal-title Enter ban reason or leave it blank 
+              .modal-body
+                  = f.hidden_field :state, value:'rejected'      
+                  = f.text_field :ban_reason , :class => 'form-control'
+              .modal-footer
+                button.btn.btn-default data-dismiss="modal" type="button"  Close
+                button.btn.btn-primary type="submit"  Reject

@@ -1,0 +1,9 @@
+= form_for [:admin,@type], html: { class: "form form-horizontal type"  } do |f|
+  .form-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'form-control'
+    = error_span(@type[:name])
+  = f.submit nil, :class => 'btn btn-primary'
+  '
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_types_path, :class => 'btn'

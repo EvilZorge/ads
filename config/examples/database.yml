@@ -1,8 +1,8 @@
 default: &default
   adapter: postgresql
-  host: localhost
-  username: ads
-  password: 123
+  host: example
+  username: example
+  password: example
   pool: 5
   timeout: 5000
 

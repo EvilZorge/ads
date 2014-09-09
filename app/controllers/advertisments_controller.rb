@@ -23,7 +23,7 @@ class AdvertismentsController < ApplicationController
   end
 
   def search
-    @advertisments = Advertisment.search(params[:search], conditions: { type: params[:type], state: 'published' }, 
+    @advertisments = Advertisment.search(params[:search], conditions: { type: params[:type], state: 'published' },
       star: true)
       render :index
   end

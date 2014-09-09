@@ -18,7 +18,7 @@ class Ability
       elsif user.role.admin?
         can :manage, User
         can :destroy, Advertisment
-        can :read, Advertisment 
+        can :read, Advertisment
         can [:update, :change_state, :multiple_change_state, :moderation], Advertisment, state: 'new'
         cannot :edit, Advertisment
         can [:read, :create, :update], Type

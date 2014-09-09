@@ -24,5 +24,5 @@ table#tableUsers class="table table-striped"
           '
           - if can? :destroy, user
             = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_user_path(user), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
-       
+
 

@@ -6,5 +6,5 @@ class AdsImage < ActiveRecord::Base
     path: ':rails_root/public/assets/ads_image/:id/:style/:basename.:extension'
 
   validates_attachment :photo,
-    content_type:  { content_type: ['image/jpeg', 'image/gif', 'image/png'] }
+    content_type:  { content_type: ['image/jpeg', 'image/png'] }
 end

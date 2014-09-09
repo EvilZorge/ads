@@ -12,7 +12,7 @@ class Advertisment < ActiveRecord::Base
   validates :state, presence: true
 
   state_machine :state, initial: :sketch do
-    before_transition :rejected => :sketch do |advertisment, transition| 
+    before_transition :rejected => :sketch do |advertisment, transition|
       advertisment[:ban_reason] = nil
     end
 

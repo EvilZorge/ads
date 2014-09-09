@@ -35,37 +35,37 @@ html lang="en"
                 - if current_user.role.admin?
                   li.dropdown
                     a data-toggle="dropdown" href="#"  Profile
-                    ul.dropdown-menu aria-labelledby="dLabel" role="menu" 
+                    ul.dropdown-menu aria-labelledby="dLabel" role="menu"
                         li= link_to "Profile's info", admin_user_path(current_user)
                         li= link_to 'Edit your profile', edit_user_registration_path
                   li.dropdown
                     a data-toggle="dropdown" href="#"  Users panel
-                    ul.dropdown-menu aria-labelledby="dLabel" role="menu" 
+                    ul.dropdown-menu aria-labelledby="dLabel" role="menu"
                         li= link_to 'Show all users', admin_users_path
                         li= link_to 'New user', new_admin_user_path
                   li.dropdown
                     a data-toggle="dropdown" href="#"  Types panel
-                    ul.dropdown-menu aria-labelledby="dLabel" role="menu" 
+                    ul.dropdown-menu aria-labelledby="dLabel" role="menu"
                         li= link_to 'Show all types', admin_types_path
-                        li= link_to 'New type', new_admin_type_path     
-                  li= link_to 'Advertisments panel', admin_advertisments_path 
+                        li= link_to 'New type', new_admin_type_path
+                  li= link_to 'Advertisments panel', admin_advertisments_path
                 - if current_user.role.user?
                   li.dropdown
                     a data-toggle="dropdown" href="#"  Profile
-                    ul.dropdown-menu aria-labelledby="dLabel" role="menu" 
+                    ul.dropdown-menu aria-labelledby="dLabel" role="menu"
                         li= link_to "Profile's info", user_path(current_user)
                         li= link_to 'Edit your profile', edit_user_registration_path
               - else
                 li= link_to 'Sign in', new_user_session_path
                 li= link_to 'Sign up', new_user_registration_path
               - if can? :create, Advertisment
-                li= link_to 'New advertisment', new_advertisment_path     
+                li= link_to 'New advertisment', new_advertisment_path
 
     .container
       .row
         .col-lg-12
           = bootstrap_flash
           = yield
-   
+
       footer
         p &copy; Company 2014

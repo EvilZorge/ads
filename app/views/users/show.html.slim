@@ -1,9 +1,8 @@
 - model_class = Advertisment
 div class="page-header"
-  h1= @user.email + ' advertisments' 
-div class='search'   
-  = render :partial => "search_form"  
-  
+  h1= @user.email + ' advertisments'
+div class='search'
+  = render :partial => "search_form"
 table#myTable class="table table-striped"
   thead
     tr
@@ -14,8 +13,8 @@ table#myTable class="table table-striped"
       th= model_class.human_attribute_name(:updated_at)
       th=t '.actions', :default => t("helpers.actions")
   tbody
-    - @advertisments.each do |advertisment| 
-      - if can? :read, advertisment 
+    - @advertisments.each do |advertisment|
+      - if can? :read, advertisment
         tr
           td= advertisment.title
           td= advertisment.body
@@ -27,7 +26,7 @@ table#myTable class="table table-striped"
             '
             - if can? :change_state, advertisment
               = link_to 'Set to moderation', change_state_advertisment_path(advertisment,state_status:'create'), method: :put, :class => 'btn btn-success btn-xs'
-            '  
+            '
             - if can? :edit, advertisment
               = link_to t('.edit', :default => t("helpers.links.edit")), edit_advertisment_path(advertisment), :class => 'btn btn-default btn-xs'
             '

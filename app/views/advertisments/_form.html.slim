@@ -18,12 +18,12 @@
     = f.fields_for :ads_images do |builder|
       - unless builder.object.new_record?
         = image_tag(builder.object.photo.url(:small))
-        = builder.link_to_remove 'Delete this image', data: {confirm: 'You sure?'}, :class => 'btn' 
+        = builder.link_to_remove 'Delete this image', data: {confirm: 'You sure?'}, :class => 'btn'
       - else
         = builder.label :photo
         = builder.file_field :photo
         = builder.link_to_remove 'remove this field'
-    = f.link_to_add 'Add image', :ads_images, :class => 'btn'   
+    = f.link_to_add 'Add image', :ads_images, :class => 'btn'
   = f.submit nil, :class => 'btn btn-primary'
   '
   = link_to t('.cancel', :default => t("helpers.links.cancel")), advertisments_path, :class => 'btn'

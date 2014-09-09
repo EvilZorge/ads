@@ -13,7 +13,7 @@ p
 p
   strong= model_class.human_attribute_name(:user_id) + ':'
   br
-  = @advertisment.user.email  
+  = @advertisment.user.email
 p
   strong= model_class.human_attribute_name(:type_id) + ':'
   br
@@ -21,7 +21,7 @@ p
 p
   strong= model_class.human_attribute_name(:state) + ':'
   br
-  = @advertisment.state   
+  = @advertisment.state
 p
   br
     - @advertisment.ads_images.each do |f|
@@ -35,20 +35,20 @@ p
 '
 - if current_user
   - if current_user.role.admin?
-    - if can? :change_state, @advertisment 
-      button.btn.btn-warning data-target="#myModal" data-toggle="modal" 
+    - if can? :change_state, @advertisment
+      button.btn.btn-warning data-target="#myModal" data-toggle="modal"
         | Reject
-      #myModal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" 
+      #myModal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
         .modal-dialog
           .modal-content
             = form_for @advertisment do |f|
               .modal-header
-                button.close data-dismiss="modal" type="button" 
+                button.close data-dismiss="modal" type="button"
                   span aria-hidden="true"  &times;
                   span.sr-only Close
-                h4#myModalLabel.modal-title Enter ban reason or leave it blank 
+                h4#myModalLabel.modal-title Enter ban reason or leave it blank
               .modal-body
-                  = f.hidden_field :state, value:'rejected'      
+                  = f.hidden_field :state, value:'rejected'
                   = f.text_field :ban_reason , :class => 'form-control'
               .modal-footer
                 button.btn.btn-default data-dismiss="modal" type="button"  Close

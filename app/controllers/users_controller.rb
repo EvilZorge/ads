@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @advertisments = Advertisment.search(params[:search], conditions: { type: params[:type], state: params[:state]},with: {user: @user.id }, 
+    @advertisments = Advertisment.search(params[:search], conditions: { type: params[:type], state: params[:state]}, with: {user: @user.id },
       star: true)
     render :show
   end

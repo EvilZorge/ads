@@ -2,11 +2,10 @@ class Admin::AdvertismentsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @advertisments = Advertisment.all
   end
 
   def moderation
-    @advertisments = Advertisment.where(state: ['new'])
+    @advertisments = Advertisment.where(state: 'new')
   end
 
   def search

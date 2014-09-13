@@ -53,10 +53,16 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    diff-lcs (1.2.5)
     enumerize (0.8.0)
       activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (2.2.0)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
     hike (1.2.3)
     i18n (0.6.11)
     innertube (1.1.0)
@@ -118,6 +124,22 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     riddle (1.5.11)
+    rspec-core (3.1.2)
+      rspec-support (~> 3.1.0)
+    rspec-expectations (3.1.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.1.0)
+    rspec-mocks (3.1.0)
+      rspec-support (~> 3.1.0)
+    rspec-rails (3.1.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.1.0)
+      rspec-expectations (~> 3.1.0)
+      rspec-mocks (~> 3.1.0)
+      rspec-support (~> 3.1.0)
+    rspec-support (3.1.0)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -188,6 +210,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   enumerize
+  factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
@@ -198,6 +221,7 @@ DEPENDENCIES
   pry
   pry-rails
   rails (= 4.1.2)
+  rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   slim-rails

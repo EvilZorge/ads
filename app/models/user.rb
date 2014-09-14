@@ -4,5 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
 
+  validates :role, presence: true
+
   enumerize :role, in: [:user, :admin], default: :user
 end

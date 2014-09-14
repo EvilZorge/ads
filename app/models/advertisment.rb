@@ -5,11 +5,11 @@ class Advertisment < ActiveRecord::Base
   accepts_nested_attributes_for :ads_images,:reject_if => lambda { |p| p['photo'].blank? },
     allow_destroy: true
 
-  validates :title, presence: true, length: { maximum: 40 }
-  validates :body, presence: true, length: { maximum: 180 }
+  validates :title, presence: true, length: { minimum: 3, maximum: 30 }
+  validates :body, presence: true, length: { minimum: 3,  maximum: 180 }
   validates :type, presence: true
   validates :user, presence: true
-  validates :state, presence: true
+  validates :state, presence: true, length: { maximum: 20 }
 
   state_machine :state, initial: :sketch do
     before_transition :rejected => :sketch do |advertisment, transition|

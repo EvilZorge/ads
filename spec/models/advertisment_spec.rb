@@ -10,20 +10,33 @@ RSpec.describe Advertisment, :type => :model do
       expect(advertisment).to be_valid
     end
 
-    it 'is invalid without title' do
-      advertisment = FactoryGirl.build(:advertisment, type: type, user: user, title: nil)
-      expect(advertisment).not_to be_valid
+    context 'when create without title' do
+      let(:advertisment) { FactoryGirl.build(:advertisment, type: type, user: user, title: nil) }
+      it 'should not be valid' do
+        expect(advertisment).not_to be_valid
+      end
     end
 
 
-    it 'is invalid without body' do
-      advertisment = FactoryGirl.build(:advertisment, type: type, user: user, body: nil)
-      expect(advertisment).not_to be_valid
+    context 'when create without body' do
+      let(:advertisment) { FactoryGirl.build(:advertisment, type: type, user: user, body: nil) }
+      it 'should not be valid' do
+        expect(advertisment).not_to be_valid
+      end
     end
 
-    it 'is invalid without type' do
-      advertisment = FactoryGirl.build(:advertisment, user: user, type: nil)
-      expect(advertisment).not_to be_valid
+    context 'when create without type' do
+      let(:advertisment) { FactoryGirl.build(:advertisment, user: user, type: nil)}
+      it 'should not be valid' do
+        expect(advertisment).not_to be_valid
+      end
+    end
+
+    context 'when create without user' do
+      let(:advertisment) { FactoryGirl.build(:advertisment, type: type, user: nil)}
+      it 'should not be valid' do
+        expect(advertisment).not_to be_valid
+      end
     end
   end
 end

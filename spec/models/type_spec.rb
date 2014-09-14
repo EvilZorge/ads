@@ -8,9 +8,9 @@ RSpec.describe Type, :type => :model do
   end
 
   context 'when create without name' do
-    it {
-      type = FactoryGirl.build(:type, name: nil)
+    let(:type) { FactoryGirl.build(:type, name: nil) }
+    it 'should not be valid' do
       expect(type).not_to be_valid
-    }
+    end
   end
 end

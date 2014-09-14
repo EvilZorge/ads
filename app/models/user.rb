@@ -5,6 +5,5 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :validatable
 
   validates :role, presence: true
-
   enumerize :role, in: [:user, :admin], default: :user
 end

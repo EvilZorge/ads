@@ -13,4 +13,11 @@ RSpec.describe Type, :type => :model do
       expect(type).not_to be_valid
     end
   end
+
+  context 'when name is too long' do
+    let(:type) { FactoryGirl.build(:type, name: SecureRandom.hex(25)) }
+    it 'should not be valid' do
+      expect(type).not_to be_valid
+    end
+  end
 end

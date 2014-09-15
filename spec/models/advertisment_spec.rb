@@ -17,7 +17,6 @@ RSpec.describe Advertisment, :type => :model do
       end
     end
 
-
     context 'when create without body' do
       let(:advertisment) { FactoryGirl.build(:advertisment, type: type, user: user, body: nil) }
       it 'should not be valid' do
@@ -38,5 +37,52 @@ RSpec.describe Advertisment, :type => :model do
         expect(advertisment).not_to be_valid
       end
     end
+
+    context 'when create without state' do
+      let(:advertisment) { FactoryGirl.build(:advertisment, type: type, user: user, state: nil)}
+      it 'should not be valid' do
+        expect(advertisment).not_to be_valid
+      end
+    end
+
+    context 'when title is too long' do
+      let(:advertisment) { FactoryGirl.build(:advertisment, type: type, user: user, title: random(31)) }
+      it 'should not be valid' do
+        expect(advertisment).not_to be_valid
+      end
+    end
+
+    context 'when title is too short' do
+      let(:advertisment) { FactoryGirl.build(:advertisment, type: type, user: user, title: random(1)) }
+      it 'should not be valid' do
+        expect(advertisment).not_to be_valid
+      end
+    end
+
+    context 'when body is too long' do
+      let(:advertisment) { FactoryGirl.build(:advertisment, type: type, user: user, body: random(181)) }
+      it 'should not be valid' do
+        expect(advertisment).not_to be_valid
+      end
+    end
+
+    context 'when body is too short' do
+      let(:advertisment) { FactoryGirl.build(:advertisment, type: type, user: user, body: random(1)) }
+      it 'should not be valid' do
+        expect(advertisment).not_to be_valid
+      end
+    end
+
+    context 'when state is too long' do
+      let(:advertisment) { FactoryGirl.build(:advertisment, type: type, user: user, state: random(21)) }
+      it 'should not be valid' do
+        expect(advertisment).not_to be_valid
+      end
+    end
+
+  end
+
+  def random(length)
+    SecureRandom.hex(length)
   end
 end

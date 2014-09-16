@@ -22,8 +22,6 @@
 /config/*.yml
 !/config/thinking_sphinx.yml
 
-
-
 # Ignore sphinx config
 /db/sphinx/*
 /config/*.sphinx.conf

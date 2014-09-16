@@ -48,7 +48,6 @@ class AdvertismentsController < ApplicationController
   end
 
   def change_state
-    binding.pry
     if @advertisment.fire_state_event(params[:state_status])
       flash[:success] = "Advertisment's state was changed to #{@advertisment.state}!"
       redirect_to :back

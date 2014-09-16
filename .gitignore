@@ -23,3 +23,8 @@
 
 # Ignore database secrets
 /config/secrets.yml
+
+# Ignore sphinx config
+/db/sphinx/*
+/config/*.sphinx.conf
+/log/*.sphinx.pid

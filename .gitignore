@@ -12,7 +12,7 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
+/log
 /tmp
 
 # Ignore local asset pipline cache files
@@ -27,4 +27,3 @@
 # Ignore sphinx config
 /db/sphinx/*
 /config/*.sphinx.conf
-/log/*.sphinx.pid

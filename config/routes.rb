@@ -5,7 +5,6 @@ Rails.application.routes.draw do
       put :change_state
     end
     collection do
-      put :multiple_change_state
       get :search
     end
 
@@ -15,7 +14,11 @@ Rails.application.routes.draw do
       resources :users
       resources :types
       resources :advertisments do
+        member do
+          put :change_state
+        end
         collection do
+          put :multiple_change_state
           get :moderation
           get :search
         end

@@ -25,7 +25,10 @@ table#myTable class="table table-striped"
             = link_to t('.show', :default => t("helpers.links.show")), advertisment_path(advertisment), :class => 'btn btn-default btn-xs'
             '
             - if can? :change_state, advertisment
-              = link_to 'Set to moderation', change_state_advertisment_path(advertisment,state_status:'create'), method: :put, :class => 'btn btn-success btn-xs'
+              - if advertisment.state=='sketch'
+                = link_to 'Set to moderation', change_state_advertisment_path(advertisment,state_status:'create'), method: :put, :class => 'btn btn-success btn-xs'
+              - else
+                = link_to 'Recover', change_state_advertisment_path(advertisment,state_status:'recover'), method: :put, :class => 'btn btn-success btn-xs'
             '
             - if can? :edit, advertisment
               = link_to t('.edit', :default => t("helpers.links.edit")), edit_advertisment_path(advertisment), :class => 'btn btn-default btn-xs'

@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :advertisment do
     title 'buy pocket'
     body 'many pockets'
-    state 'published'
+    state 'sketch'
   end
 end

@@ -1,4 +1,5 @@
 class Advertisment < ActiveRecord::Base
+  extend Enumerize
   belongs_to :user
   belongs_to :type
   has_many :ads_images, dependent: :destroy
@@ -9,7 +10,9 @@ class Advertisment < ActiveRecord::Base
   validates :body, presence: true, length: { minimum: 3,  maximum: 180 }
   validates :type, presence: true
   validates :user, presence: true
-  validates :state, presence: true, length: { maximum: 20 }
+  validates :state, presence: true, uniqueness: true
+
+  enumerize :state, in: [:sketch, :new, :approved, :rejected, :archived, :published], default: :sketch
 
   state_machine :state, initial: :sketch do
     before_transition :rejected => :sketch do |advertisment, transition|

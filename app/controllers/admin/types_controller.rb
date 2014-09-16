@@ -15,6 +15,7 @@ class Admin::TypesController < ApplicationController
       flash[:success] = "Type #{@type.name} was created!"
       redirect_to action: 'index'
     else
+      flash[:error] = 'Something wrong'
       render 'new'
     end
   end
@@ -27,18 +28,15 @@ class Admin::TypesController < ApplicationController
       flash[:success] = "Type #{@type.name} was updated!"
       redirect_to action: 'index'
     else
+      flash[:error] = 'Something wrong'
       render 'edit'
     end
   end
 
   def destroy
-    if @type.destroy
-      flash[:success] = 'Type was deleted!'
-      redirect_to action: 'index'
-    else
-      flash[:fail] = 'Something wrong'
-      redirect_to action: 'index'
-    end
+    @type.destroy
+    flash[:success] = 'Type was deleted!'
+    redirect_to action: 'index'
   end
 
   private

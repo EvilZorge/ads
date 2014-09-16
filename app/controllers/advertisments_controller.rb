@@ -1,6 +1,6 @@
 class AdvertismentsController < ApplicationController
   load_and_authorize_resource
-  skip_authorize_resource only: [:index]
+  skip_authorize_resource only: :index
 
   def index
     @advertisments = Advertisment.where(state:"published")
@@ -17,7 +17,7 @@ class AdvertismentsController < ApplicationController
       flash[:success] = "Advertisment #{@advertisment.title} was created!"
       redirect_to @advertisment
     else
-      flash[:fail] = 'Something wrong'
+      flash[:error] = 'Something wrong'
       render 'new'
     end
   end
@@ -32,12 +32,11 @@ class AdvertismentsController < ApplicationController
   end
 
   def update
-    authorize! :perform, BanReasonChange.new(@advertisment, advertisment_params[:ban_reason])
     if @advertisment.update_attributes(advertisment_params)
       flash[:success] = "Advertisment #{@advertisment.title} was updated!"
       redirect_to @advertisment
     else
-      flash[:fail] = 'Something wrong'
+      flash[:error] = 'Something wrong'
       render 'edit'
     end
   end
@@ -49,27 +48,19 @@ class AdvertismentsController < ApplicationController
   end
 
   def change_state
+    binding.pry
     if @advertisment.fire_state_event(params[:state_status])
       flash[:success] = "Advertisment's state was changed to #{@advertisment.state}!"
-      redirect_to action: 'show'
+      redirect_to :back
     else
-      flash[:fail] = 'Something wrong'
+      flash[:error] = 'Something wrong'
       render 'show'
     end
-  end
-
-  def multiple_change_state
-    @advertisments = Advertisment.find(params[:advertisment_ids])
-    @advertisments.each do |advertisment|
-      advertisment.fire_state_event(params[:state_status])
-    end
-    flash[:success] = "Updated advertiments!"
-    redirect_to '/admin/advertisments'
   end
 
   private
 
   def advertisment_params
-    params.require(:advertisment).permit(:title, :body, :type_id, :ban_reason, :state, ads_images_attributes: [:id, :photo, :_destroy])
+    params.require(:advertisment).permit(:title, :body, :type_id, :user_id, ads_images_attributes: [:id, :photo, :_destroy])
   end
 end

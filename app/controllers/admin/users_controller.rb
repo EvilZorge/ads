@@ -12,6 +12,7 @@ class Admin::UsersController < ApplicationController
       flash[:success] = "User #{@user.email} was created!"
       redirect_to @user
     else
+      flash[:error] = 'Something wrong'
       render 'new'
     end
   end
@@ -20,19 +21,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    #if params[:user][:password].blank?
-    #  params[:user].delete(:password)
-    #  params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
-    #end
-    #if @user.valid_password?(params[:user][:current_password])
     if @user.update_attributes(user_params)
       flash[:success] = "User #{@user.email} was updated!"
       redirect_to @user
     else
+      flash[:error] = 'Something wrong'
       render 'edit'
     end
-    #else redirect_to root_url
-    #end
   end
 
   def delete

@@ -2,14 +2,11 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, Advertisment, state: ['published']
+    can :read, Advertisment, state: 'published'
     can :read, User
     can :read, Type
     can :search, Advertisment
     if user
-      can :perform, BanReasonChange do |f|
-        (f.ban_reason.blank? && user.role.user?) || (!f.ban_reason.blank? && f.advertisment.state = 'rejected' && user.role.admin?)
-      end
       if user.role.user?
         can [:read, :update, :destroy], User, id: user.id
         can :change_state, Advertisment, user_id: user.id, state: ['sketch', 'archived', 'rejected']

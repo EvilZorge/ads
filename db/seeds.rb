@@ -19,3 +19,15 @@ User.create do |u|
   u.password_confirmation="12345678"
   u.role="user"
 end
+
+Type.create do |u|
+  u.name = 'Sell'
+end
+
+Type.create do |u|
+  u.name = 'Buy'
+end
+
+Type.create do |u|
+  u.name = 'Change'
+end

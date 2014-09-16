@@ -18,12 +18,13 @@
 # Ignore local asset pipline cache files
 /public/assets
 
-# Ignore local database config
-/config/database.yml
+# Ignore config files
+/config/*.yml
+!/config/thinking_sphinx.yml
 
-# Ignore database secrets
-/config/secrets.yml
+
 
 # Ignore sphinx config
 /db/sphinx/*
 /config/*.sphinx.conf
+

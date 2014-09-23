@@ -2,7 +2,8 @@
     .form-group
         = label_tag 'Title and Body'
         .controls
-          = text_field_tag :search, params[:search]
+          = text_field_tag :search, params[:search] , id: 'autocomplete', autocomplete: :off
+        .complete
     .form-group
       = label_tag 'Type'
       .controls

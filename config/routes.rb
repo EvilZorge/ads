@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
+
   resources :advertisments do
     member do
       put :change_state
     end
     collection do
       get :search
+      get :autocomplete
     end
-
   end
+
   authenticated :user, lambda { |u| u.role == 'admin' } do
     namespace :admin do
       resources :users
@@ -25,11 +27,13 @@ Rails.application.routes.draw do
       end
     end
   end
+
   resources :users do
     member do
       get :search
     end
   end
+
   root to: 'advertisments#index'
 
 end

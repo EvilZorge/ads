@@ -6,6 +6,7 @@ class Ability
     can :read, User
     can :read, Type
     can :search, Advertisment
+    can :autocomplete, Advertisment
     if user
       if user.role.user?
         can [:read, :update, :destroy], User, id: user.id

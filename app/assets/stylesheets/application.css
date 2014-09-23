@@ -6,9 +6,53 @@
  *
  */
 
-
 div.search {
   border: 2px solid #c9dff0;
   padding: 10px;
   margin: 20px;
+}
+
+div.auto_complete {
+  position: absolute;
+  background: none repeat scroll 0% 0% #FFF;
+  border: 2px solid;
+  overflow: hidden;
+  margin: 10px 0;
+  z-index: 1000;
+  outline: none;
+}
+
+
+
+div.inline {
+  display: inline-block;
+}
+div.content_min {
+  font-family: tahoma,arial,verdana,sans-serif,Lucida Sans;
+  overflow: hidden;
+  width: 200px;
+  height: 55px;
+  padding: 5px 5px;
+}
+
+span.content_title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+span.content_type {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  font-size: 12px;
+  color: #999;
+}
+
+span.content_all {
+  position: absolute;
+  left: 30%;
+  height: 45px;
 }

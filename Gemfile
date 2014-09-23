@@ -21,6 +21,7 @@ gem 'whenever', require: false
 gem 'twitter-bootstrap-rails'
 gem 'pg'
 gem 'thinking-sphinx'
+gem 'ejs'
 
 group :development do
   gem 'better_errors'

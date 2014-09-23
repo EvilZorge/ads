@@ -57,9 +57,18 @@ class AdvertismentsController < ApplicationController
     end
   end
 
+  def autocomplete
+    if params[:search]
+      @advertisments = Advertisment.search( conditions: { title: params[:search], state: "published" }, star: true, max_matches: 5)
+      @advertisments = AdvertismentSerializer.serialize_collection(@advertisments)
+      render json: {data: @advertisments}
+    end
+  end
+
   private
 
   def advertisment_params
     params.require(:advertisment).permit(:title, :body, :type_id, :user_id, ads_images_attributes: [:id, :photo, :_destroy])
   end
 end
+

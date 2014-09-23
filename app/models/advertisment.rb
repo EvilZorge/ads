@@ -10,7 +10,7 @@ class Advertisment < ActiveRecord::Base
   validates :body, presence: true, length: { minimum: 3,  maximum: 180 }
   validates :type, presence: true
   validates :user, presence: true
-  validates :state, presence: true, uniqueness: true
+  validates :state, presence: true
 
   enumerize :state, in: [:sketch, :new, :approved, :rejected, :archived, :published], default: :sketch
 
@@ -43,4 +43,5 @@ class Advertisment < ActiveRecord::Base
       transition :published => :archived
     end
   end
+
 end

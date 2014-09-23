@@ -1,0 +1,19 @@
+<div class="auto_complete">
+  <div class="inline">
+    <% data.map(function(ad) { %>
+      <div class="content_min">
+        <a href=/advertisments/<%= ad.id %>>
+          <img src=<%= ad.photo %>>
+          <span class="content_all">
+            <span class="content_title">
+              <%= ad.title %>
+            </span>
+            <span class="content_type">
+              <%= ad.type %>
+            </span>
+          </span>
+        </a>
+      </div>
+    <% }) %>
+  </div>
+</div>

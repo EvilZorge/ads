@@ -39,12 +39,17 @@ class Admin::AdvertismentsController < ApplicationController
   end
 
   def multiple_change_state
-    @advertisments = Advertisment.find(params[:advertisment_ids])
-    @advertisments.each do |advertisment|
-      advertisment.fire_state_event(params[:state_status])
+    if params[:advertisment_ids]
+      @advertisments = Advertisment.find(params[:advertisment_ids])
+      @advertisments.each do |advertisment|
+        advertisment.fire_state_event(params[:state_status])
+      end
+      flash[:success] = "Updated advertiments!"
+      redirect_to action: 'moderation'
+    else
+      flash[:error] = 'Check your params'
+      redirect_to :back
     end
-    flash[:success] = "Updated advertiments!"
-    redirect_to action: 'moderation'
   end
 
   private

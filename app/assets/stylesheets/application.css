@@ -15,7 +15,8 @@ div.search {
 div.auto_complete {
   position: absolute;
   background: none repeat scroll 0% 0% #FFF;
-  border: 2px solid;
+  border-color: #66afe9;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
   overflow: hidden;
   margin: 10px 0;
   z-index: 1000;

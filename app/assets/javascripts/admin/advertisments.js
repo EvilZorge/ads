@@ -7,7 +7,7 @@ $(document).ready(function(){
       } ]
     });
 
-     $('#tableModeration').find(':checkbox').click(function() {
+    $('#tableModeration').find(':checkbox').click(function() {
       if ($('#tableModeration').find(':checkbox').is(":checked")) {
         $('#btn_moder').prop('disabled',false);
       }

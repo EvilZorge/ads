@@ -22,6 +22,7 @@ gem 'twitter-bootstrap-rails'
 gem 'pg'
 gem 'thinking-sphinx'
 gem 'ejs'
+gem 'rack-cache'
 
 group :development do
   gem 'better_errors'

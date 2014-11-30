@@ -1,0 +1,14 @@
+- if @user.reviews.any? 
+  - @user.reviews.each do |review| 
+    div
+      = review.body
+      '
+      = review.created_at
+      '
+      = review.user.email
+      '
+      - if can? :edit, review
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_review_path(@user, id: review.id), :class => 'btn btn-default'
+      '  
+      - if can? :destroy, review
+        = link_to t('.destroy', :default => t("helpers.links.destroy")), user_review_path(@user, id: review.id), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

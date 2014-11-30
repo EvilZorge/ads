@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140816171142) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20141130115513) do
 
   create_table "ads_images", force: true do |t|
     t.integer  "advertisment_id"
@@ -35,6 +32,41 @@ ActiveRecord::Schema.define(version: 20140816171142) do
     t.datetime "updated_at"
     t.string   "state",      default: "sketch"
     t.string   "ban_reason"
+    t.integer  "country_id"
+    t.integer  "city_id"
+  end
+
+  add_index "advertisments", ["city_id"], name: "index_advertisments_on_city_id", using: :btree
+  add_index "advertisments", ["country_id"], name: "index_advertisments_on_country_id", using: :btree
+
+  create_table "cities", force: true do |t|
+    t.string  "name"
+    t.integer "country_id"
+  end
+
+  add_index "cities", ["country_id"], name: "index_cities_on_country_id", using: :btree
+  add_index "cities", ["name"], name: "index_cities_on_name", unique: true, using: :btree
+
+  create_table "comments", force: true do |t|
+    t.string   "body"
+    t.integer  "advertisment_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", force: true do |t|
+    t.string "name"
+  end
+
+  add_index "countries", ["name"], name: "index_countries_on_name", unique: true, using: :btree
+
+  create_table "reviews", force: true do |t|
+    t.string   "body"
+    t.integer  "user_id"
+    t.integer  "assignee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "types", force: true do |t|
@@ -57,6 +89,9 @@ ActiveRecord::Schema.define(version: 20140816171142) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role",                   default: "user"
+    t.string   "nickname"
+    t.string   "name"
+    t.string   "surname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

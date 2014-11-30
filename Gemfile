@@ -19,7 +19,7 @@ gem 'nested_form'
 gem 'state_machine'
 gem 'whenever', require: false
 gem 'twitter-bootstrap-rails'
-gem 'pg'
+gem 'mysql2'
 gem 'thinking-sphinx'
 gem 'ejs'
 gem 'rack-cache'

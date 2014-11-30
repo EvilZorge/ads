@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :advertisments do
+    resources :comments, :only => [:create, :new, :edit, :update, :destroy]
     member do
       put :change_state
     end
@@ -14,7 +15,9 @@ Rails.application.routes.draw do
   authenticated :user, lambda { |u| u.role == 'admin' } do
     namespace :admin do
       resources :users
-      resources :types
+      resources :types, except: :show
+      resources :countries, except: :show
+      resources :cities, except: :show
       resources :advertisments do
         member do
           put :change_state
@@ -29,6 +32,7 @@ Rails.application.routes.draw do
   end
 
   resources :users do
+    resources :reviews
     member do
       get :search
     end

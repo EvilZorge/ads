@@ -6,6 +6,9 @@ table#tableUsers class="table table-striped"
   thead
     tr
       th= model_class.human_attribute_name(:email)
+      th= model_class.human_attribute_name(:nickname)
+      th= model_class.human_attribute_name(:name)
+      th= model_class.human_attribute_name(:surname)
       th= model_class.human_attribute_name(:role)
       th= model_class.human_attribute_name(:sign_in_count)
       th= model_class.human_attribute_name(:created_at)
@@ -13,7 +16,10 @@ table#tableUsers class="table table-striped"
   tbody
     - @users.each do |user|
       tr
-        td= user.email
+        td= link_to user.email, admin_user_path(user)
+        td= user.nickname
+        td= user.name
+        td= user.surname
         td= user.role
         td= user.sign_in_count
         td=l user.created_at

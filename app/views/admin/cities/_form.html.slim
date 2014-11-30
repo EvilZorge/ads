@@ -1,0 +1,13 @@
+= form_for [:admin,@city], class: "form form-horizontal country" do |f|
+  .form-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'form-control'
+    = error_span(@city[:name])
+  .form-group
+    = f.label :country_id, :class => 'control-label'
+    .controls
+      = f.select :country_id, Country.all.collect { |c| [c.name, c.id] } , :class => 'form-control'  
+  = f.submit nil, :class => 'btn btn-primary'
+  '
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_cities_path, :class => 'btn'

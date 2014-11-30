@@ -5,6 +5,26 @@
       = f.text_field :email, autofocus: true, :class => 'form-control'
     = error_span(@user[:email])
   .form-group
+    = f.label :password, :class => 'control-label'
+    .controls
+      = f.text_field :password, :class => 'form-control'
+    = error_span(@user[:password])
+  .form-group
+    = f.label :nickname, :class => 'control-label'
+    .controls
+      = f.text_field :nickname, autofocus: true, :class => 'form-control'
+    = error_span(@user[:nickname])  
+  .form-group  
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, autofocus: true, :class => 'form-control'
+    = error_span(@user[:name])  
+  .form-group  
+    = f.label :surname, :class => 'control-label'
+    .controls
+      = f.text_field :surname, autofocus: true, :class => 'form-control'
+    = error_span(@user[:surname])  
+  .form-group
     = f.label :role, :class => 'control-label'
     .controls
       = f.select :role, User.role.options, :class => 'form-control'

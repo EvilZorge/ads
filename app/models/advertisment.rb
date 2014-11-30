@@ -2,7 +2,11 @@ class Advertisment < ActiveRecord::Base
   extend Enumerize
   belongs_to :user
   belongs_to :type
+  belongs_to :country
+  belongs_to :city
   has_many :ads_images, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
   accepts_nested_attributes_for :ads_images,:reject_if => lambda { |p| p['photo'].blank? },
     allow_destroy: true
 

@@ -1,4 +1,4 @@
-class Admin::TypesController < ApplicationController
+class Admin::CitiesController < ApplicationController
   load_and_authorize_resource
 
   def index
@@ -8,8 +8,8 @@ class Admin::TypesController < ApplicationController
   end
 
   def create
-    if @type.save
-      flash[:success] = "Type #{@type.name} was created!"
+    if @city.save
+      flash[:success] = "City #{@city.name} was created!"
       redirect_to action: 'index'
     else
       flash[:error] = 'Something wrong'
@@ -21,8 +21,8 @@ class Admin::TypesController < ApplicationController
   end
 
   def update
-    if @type.update_attributes(type_params)
-      flash[:success] = "Type #{@type.name} was updated!"
+    if @city.update_attributes(city_params)
+      flash[:success] = "City #{@city.name} was updated!"
       redirect_to action: 'index'
     else
       flash[:error] = 'Something wrong'
@@ -31,14 +31,14 @@ class Admin::TypesController < ApplicationController
   end
 
   def destroy
-    @type.destroy
-    flash[:success] = 'Type was deleted!'
+    @city.destroy
+    flash[:success] = 'City was deleted!'
     redirect_to action: 'index'
   end
 
   private
 
-  def type_params
-    params.require(:type).permit(:name)
+  def city_params
+    params.require(:city).permit(:name, :country_id)
   end
 end

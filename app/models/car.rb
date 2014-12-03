@@ -14,5 +14,4 @@ class Car < ActiveRecord::Base
   belongs_to :model
   has_one :advertisment, as: :resource
   has_and_belongs_to_many :features
-  accepts_nested_attributes_for :advertisments
 end

@@ -36,11 +36,6 @@ ActiveRecord::Schema.define(version: 20141203092521) do
     t.string   "ban_reason"
   end
 
-  create_table "car_features", force: true do |t|
-    t.integer "car_id"
-    t.integer "feature_id"
-  end
-
   create_table "cars", force: true do |t|
     t.integer "make_id"
     t.integer "model_id"
@@ -56,6 +51,11 @@ ActiveRecord::Schema.define(version: 20141203092521) do
     t.integer "door_id"
     t.integer "color_id"
     t.string  "price"
+  end
+
+  create_table "cars_features", force: true do |t|
+    t.integer "car_id"
+    t.integer "feature_id"
   end
 
   create_table "cities", force: true do |t|

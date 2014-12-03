@@ -15,7 +15,6 @@ class CreateCars < ActiveRecord::Migration
       t.belongs_to :door
       t.belongs_to :color
       t.string :price
-
     end
   end
 end

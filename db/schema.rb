@@ -23,8 +23,6 @@ ActiveRecord::Schema.define(version: 20141202205630) do
     t.datetime "photo_updated_at"
   end
 
-  add_index "ads_images", ["advertisment_id"], name: "ads_images_advertisment_id_fk", using: :btree
-
   create_table "advertisments", force: true do |t|
     t.string   "title",                               null: false
     t.text     "body",                                null: false
@@ -63,8 +61,6 @@ ActiveRecord::Schema.define(version: 20141202205630) do
   add_index "advertisments", ["price"], name: "index_advertisments_on_price", using: :btree
   add_index "advertisments", ["style_id"], name: "index_advertisments_on_style_id", using: :btree
   add_index "advertisments", ["transmission_id"], name: "index_advertisments_on_transmission_id", using: :btree
-  add_index "advertisments", ["type_id"], name: "advertisments_type_id_fk", using: :btree
-  add_index "advertisments", ["user_id"], name: "advertisments_user_id_fk", using: :btree
   add_index "advertisments", ["year_id"], name: "index_advertisments_on_year_id", using: :btree
 
   create_table "advertisments_features", force: true do |t|
@@ -87,15 +83,12 @@ ActiveRecord::Schema.define(version: 20141202205630) do
   add_index "colors", ["name"], name: "index_colors_on_name", unique: true, using: :btree
 
   create_table "comments", force: true do |t|
-    t.string   "body"
+    t.string   "body",            null: false
     t.integer  "advertisment_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "comments", ["advertisment_id"], name: "comments_advertisment_id_fk", using: :btree
-  add_index "comments", ["user_id"], name: "comments_user_id_fk", using: :btree
 
   create_table "conditions", force: true do |t|
     t.string "name"
@@ -152,15 +145,12 @@ ActiveRecord::Schema.define(version: 20141202205630) do
   add_index "models", ["name"], name: "index_models_on_name", unique: true, using: :btree
 
   create_table "reviews", force: true do |t|
-    t.string   "body"
+    t.string   "body",        null: false
     t.integer  "user_id"
     t.integer  "assignee_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "reviews", ["assignee_id"], name: "reviews_assignee_id_fk", using: :btree
-  add_index "reviews", ["user_id"], name: "reviews_user_id_fk", using: :btree
 
   create_table "styles", force: true do |t|
     t.string "name"
@@ -194,9 +184,9 @@ ActiveRecord::Schema.define(version: 20141202205630) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role",                   default: "user"
-    t.string   "nickname"
-    t.string   "name"
-    t.string   "surname"
+    t.string   "nickname",                                null: false
+    t.string   "name",                                    null: false
+    t.string   "surname",                                 null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -9,15 +9,19 @@
 User.create do |u|
 	u.email="evilzorge@gmail.com"
 	u.password="12345678"
-	u.password_confirmation="12345678"
   u.role="admin"
+  u.nickname = "test"
+  u.name = "test"
+  u.surname = "test"
 end
 
 User.create do |u|
   u.email="envoyfromgalaxy@ya.ru"
   u.password="12345678"
-  u.password_confirmation="12345678"
   u.role="user"
+  u.nickname = "test"
+  u.name = "test"
+  u.surname = "test"
 end
 
 Type.create do |u|

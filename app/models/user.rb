@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 3,  maximum: 30 }
   validates :surname, presence: true, length: { minimum: 3,  maximum: 30 }
   enumerize :role, in: [:user, :admin], default: :user
+
+  def fullname
+    name.titleize + ' '+ surname.titleize
+  end
 end

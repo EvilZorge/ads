@@ -5,6 +5,7 @@ class CreateAdvertisments < ActiveRecord::Migration
       t.text :body, null: false
       t.belongs_to :user
       t.belongs_to :type
+      t.belongs_to :resource, polymorphic: true
       t.timestamps
     end
   end

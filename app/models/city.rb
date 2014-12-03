@@ -1,4 +1,4 @@
 class City < ActiveRecord::Base
-  has_many :advertisments
+  has_many :cars
   belongs_to :country
 end

@@ -1,4 +1,4 @@
 class Model < ActiveRecord::Base
-  has_many :advertisments
+  has_many :cars
   belongs_to :make
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202205630) do
+ActiveRecord::Schema.define(version: 20141203092521) do
 
   create_table "ads_images", force: true do |t|
     t.integer  "advertisment_id"
@@ -23,53 +23,39 @@ ActiveRecord::Schema.define(version: 20141202205630) do
     t.datetime "photo_updated_at"
   end
 
-  add_index "ads_images", ["advertisment_id"], name: "ads_images_advertisment_id_fk", using: :btree
-
   create_table "advertisments", force: true do |t|
-    t.string   "title",                               null: false
-    t.text     "body",                                null: false
+    t.string   "title",                            null: false
+    t.text     "body",                             null: false
     t.integer  "user_id"
     t.integer  "type_id"
+    t.integer  "resource_id"
+    t.string   "resource_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "state",            default: "sketch"
+    t.string   "state",         default: "sketch"
     t.string   "ban_reason"
-    t.integer  "country_id"
-    t.integer  "city_id"
-    t.integer  "condition_id"
-    t.integer  "style_id"
-    t.integer  "mileage_id"
-    t.integer  "year_id"
-    t.integer  "engine_id"
-    t.integer  "engine_volume_id"
-    t.integer  "door_id"
-    t.integer  "color_id"
-    t.integer  "transmission_id"
-    t.integer  "make_id"
-    t.integer  "model_id"
-    t.string   "price",                               null: false
   end
 
-  add_index "advertisments", ["city_id"], name: "index_advertisments_on_city_id", using: :btree
-  add_index "advertisments", ["color_id"], name: "index_advertisments_on_color_id", using: :btree
-  add_index "advertisments", ["condition_id"], name: "index_advertisments_on_condition_id", using: :btree
-  add_index "advertisments", ["country_id"], name: "index_advertisments_on_country_id", using: :btree
-  add_index "advertisments", ["door_id"], name: "index_advertisments_on_door_id", using: :btree
-  add_index "advertisments", ["engine_id"], name: "index_advertisments_on_engine_id", using: :btree
-  add_index "advertisments", ["engine_volume_id"], name: "index_advertisments_on_engine_volume_id", using: :btree
-  add_index "advertisments", ["make_id"], name: "index_advertisments_on_make_id", using: :btree
-  add_index "advertisments", ["mileage_id"], name: "index_advertisments_on_mileage_id", using: :btree
-  add_index "advertisments", ["model_id"], name: "index_advertisments_on_model_id", using: :btree
-  add_index "advertisments", ["price"], name: "index_advertisments_on_price", using: :btree
-  add_index "advertisments", ["style_id"], name: "index_advertisments_on_style_id", using: :btree
-  add_index "advertisments", ["transmission_id"], name: "index_advertisments_on_transmission_id", using: :btree
-  add_index "advertisments", ["type_id"], name: "advertisments_type_id_fk", using: :btree
-  add_index "advertisments", ["user_id"], name: "advertisments_user_id_fk", using: :btree
-  add_index "advertisments", ["year_id"], name: "index_advertisments_on_year_id", using: :btree
-
-  create_table "advertisments_features", force: true do |t|
-    t.integer "advertisment_id"
+  create_table "car_features", force: true do |t|
+    t.integer "car_id"
     t.integer "feature_id"
+  end
+
+  create_table "cars", force: true do |t|
+    t.integer "make_id"
+    t.integer "model_id"
+    t.integer "country_id"
+    t.integer "city_id"
+    t.integer "condition_id"
+    t.integer "style_id"
+    t.integer "mileage_id"
+    t.integer "year_id"
+    t.integer "engine_id"
+    t.integer "engine_volume_id"
+    t.integer "transmission_id"
+    t.integer "door_id"
+    t.integer "color_id"
+    t.string  "price"
   end
 
   create_table "cities", force: true do |t|
@@ -87,15 +73,12 @@ ActiveRecord::Schema.define(version: 20141202205630) do
   add_index "colors", ["name"], name: "index_colors_on_name", unique: true, using: :btree
 
   create_table "comments", force: true do |t|
-    t.string   "body"
+    t.string   "body",            null: false
     t.integer  "advertisment_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "comments", ["advertisment_id"], name: "comments_advertisment_id_fk", using: :btree
-  add_index "comments", ["user_id"], name: "comments_user_id_fk", using: :btree
 
   create_table "conditions", force: true do |t|
     t.string "name"
@@ -152,15 +135,12 @@ ActiveRecord::Schema.define(version: 20141202205630) do
   add_index "models", ["name"], name: "index_models_on_name", unique: true, using: :btree
 
   create_table "reviews", force: true do |t|
-    t.string   "body"
+    t.string   "body",        null: false
     t.integer  "user_id"
     t.integer  "assignee_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "reviews", ["assignee_id"], name: "reviews_assignee_id_fk", using: :btree
-  add_index "reviews", ["user_id"], name: "reviews_user_id_fk", using: :btree
 
   create_table "styles", force: true do |t|
     t.string "name"
@@ -194,9 +174,9 @@ ActiveRecord::Schema.define(version: 20141202205630) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role",                   default: "user"
-    t.string   "nickname"
-    t.string   "name"
-    t.string   "surname"
+    t.string   "nickname",                                null: false
+    t.string   "name",                                    null: false
+    t.string   "surname",                                 null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -29,5 +29,43 @@ $(document).ready(function(){
   $("#autocomplete").blur(function() {
     $(".complete").hide();
   });
+
+  $("#country-select").on('change', function() {
+    var search = $("#country-select").val();
+    $.ajax({
+      url: '/advertisments/cities_for_select',
+      type: 'get',
+      data: {search: search},
+      success: function(ads) {
+        $("#city-select").prop("disabled",false);
+        $("#city-select").html("");
+        for (var i in ads.data) {
+          $("#city-select").append(new Option(ads.data[i].name, ads.data[i].id));
+        }
+      },
+      error: function(xhr, status, error) {
+        alert(xhr, status, error);
+      },
+    });
+  });
+
+  $("#make-select").on('change', function() {
+    var search = $("#make-select").val();
+    $.ajax({
+      url: '/advertisments/models_for_select',
+      type: 'get',
+      data: {search: search},
+      success: function(ads) {
+        $("#model-select").prop("disabled",false);
+        $("#model-select").html("");
+        for (var i in ads.data) {
+          $("#model-select").append(new Option(ads.data[i].name, ads.data[i].id));
+        }    
+      },
+      error: function(xhr, status, error) {
+        alert(xhr, status, error);
+      },
+    });
+  });
 });
 

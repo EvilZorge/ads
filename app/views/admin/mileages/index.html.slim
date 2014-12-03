@@ -1,0 +1,18 @@
+- model_class = Mileage
+div class="page-header"
+  h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+table#tablemileages class="table table-striped"
+  thead
+    tr
+      th= model_class.human_attribute_name(:name)
+      th=t '.actions', :default => t("helpers.actions")
+  tbody
+    - @mileages.each do |mileage|
+      tr
+        td= mileage.name
+        td
+          = link_to 'Edit', edit_admin_mileage_path(mileage), :class => 'btn btn-default btn-xs'
+          '
+          - if can? :destroy, mileage
+            = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_mileage_path(mileage), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+

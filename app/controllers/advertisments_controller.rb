@@ -65,9 +65,24 @@ class AdvertismentsController < ApplicationController
     end
   end
 
+  def cities_for_select
+    if params[:search]
+      @cities = Country.find(params[:search]).cities
+      render json: {data: @cities}
+    end
+  end
+
+  def models_for_select
+    if params[:search]
+      @models = Make.find(params[:search]).models
+      render json: {data: @models}
+    end
+  end
+
   private
 
   def advertisment_params
-    params.require(:advertisment).permit(:title, :body, :type_id, :user_id, ads_images_attributes: [:id, :photo, :_destroy])
+    params.require(:advertisment).permit(:title, :body, :type_id, :user_id, :country_id, :city_id, :make_id, :model_id, :style_id,
+    :mileage_id, :year_id, :engine_id, :engine_volume_id, :transmission_id, :door_id, :color_id, {feature_ids: []}, :price, ads_images_attributes: [:id, :photo, :_destroy])
   end
 end

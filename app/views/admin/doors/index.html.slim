@@ -1,0 +1,18 @@
+- model_class = Door
+div class="page-header"
+  h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+table#tabledoors class="table table-striped"
+  thead
+    tr
+      th= model_class.human_attribute_name(:name)
+      th=t '.actions', :default => t("helpers.actions")
+  tbody
+    - @doors.each do |door|
+      tr
+        td= door.name
+        td
+          = link_to 'Edit', edit_admin_door_path(door), :class => 'btn btn-default btn-xs'
+          '
+          - if can? :destroy, door
+            = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_door_path(door), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+

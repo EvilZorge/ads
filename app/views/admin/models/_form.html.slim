@@ -1,0 +1,13 @@
+= form_for [:admin,@model], class: "form form-horizontal models" do |f|
+  .form-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'form-control'
+    = error_span(@model[:name])
+  .form-group
+    = f.label :make_id, :class => 'control-label'
+    .controls
+      = f.select :make_id, Make.all.collect { |c| [c.name, c.id] } , :class => 'form-control'  
+  = f.submit nil, :class => 'btn btn-primary'
+  '
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_models_path, :class => 'btn'

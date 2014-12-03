@@ -1,0 +1,18 @@
+- model_class = EngineVolume
+div class="page-header"
+  h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+table#tableengine_volumes class="table table-striped"
+  thead
+    tr
+      th= model_class.human_attribute_name(:name)
+      th=t '.actions', :default => t("helpers.actions")
+  tbody
+    - @engine_volumes.each do |engine_volume|
+      tr
+        td= engine_volume.name
+        td
+          = link_to 'Edit', edit_admin_engine_volume_path(engine_volume), :class => 'btn btn-default btn-xs'
+          '
+          - if can? :destroy, engine_volume
+            = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_engine_volume_path(engine_volume), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+

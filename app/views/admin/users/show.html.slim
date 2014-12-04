@@ -6,6 +6,14 @@ p
   br
   = @user.email
 p
+  strong= model_class.human_attribute_name(:nickname) + ':'
+  br
+  l= @user.nickname
+p
+  strong Fullname:
+  br
+  l= @user.fullname
+p
   strong= model_class.human_attribute_name(:role) + ':'
   br
   = @user.role

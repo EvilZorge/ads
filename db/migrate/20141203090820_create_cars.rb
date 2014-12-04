@@ -1,6 +1,7 @@
 class CreateCars < ActiveRecord::Migration
   def change
     create_table :cars do |t|
+      t.belongs_to :advertisment
       t.belongs_to :make
       t.belongs_to :model
       t.belongs_to :country

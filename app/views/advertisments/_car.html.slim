@@ -1,0 +1,60 @@
+.form-group
+  = builder.label :country_id, :class => 'control-label'
+  .controls
+    = builder.select :country_id, Country.all.collect {|p| [ p.name,p.id ] }, {:include_blank => 'Select'}, id: "country-select"
+.form-group
+  = builder.label :city_id, :class => 'control-label'
+  .controls
+    = builder.select :city_id, "", {:class => 'form-control',:include_blank => 'Select country first',disabled: true}, {id: "city-select" }
+.form-group
+  = builder.label :make_id, :class => 'control-label'
+  .controls
+    = builder.select :make_id, Make.all.collect {|p| [ p.name,p.id ] }, {:include_blank => 'Select'}, id: "make-select"
+.form-group
+  = builder.label :model_id, :class => 'control-label'
+  .controls
+    = builder.select :model_id, "", {:class => 'form-control',:include_blank => 'Select make first'}, {id: "model-select", disabled: true}
+.form-group
+  = builder.label :condition_id, :class => 'control-label'
+  .controls
+    = builder.select :condition_id, Condition.all.collect {|p| [ p.name,p.id ] }, :class => 'form-control'    
+.form-group
+  = builder.label :style_id, :class => 'control-label'
+  .controls
+    = builder.select :style_id, Style.all.collect {|p| [ p.name,p.id ] }, :class => 'form-control'
+.form-group
+  = builder.label :mileage_id, :class => 'control-label'
+  .controls
+    = builder.select :mileage_id, Mileage.all.collect {|p| [ p.name,p.id ] }, :class => 'form-control'
+.form-group
+  = builder.label :year_id, :class => 'control-label'
+  .controls
+    = builder.select :year_id, Year.all.collect {|p| [ p.name,p.id ] }, :class => 'form-control'
+.form-group
+  = builder.label :engine_id, :class => 'control-label'
+  .controls
+    = builder.select :engine_id, Engine.all.collect {|p| [ p.name,p.id ] }, :class => 'form-control'
+.form-group
+  = builder.label :engine_volume_id, :class => 'control-label'
+  .controls
+    = builder.select :engine_volume_id, EngineVolume.all.collect {|p| [ p.name,p.id ] }, :class => 'form-control'
+.form-group
+  = builder.label :transmission_id, :class => 'control-label'
+  .controls
+    = builder.select :transmission_id, Transmission.all.collect {|p| [ p.name,p.id ] }, :class => 'form-control'
+.form-group
+  = builder.label :door_id, :class => 'control-label'
+  .controls
+    = builder.select :door_id, Door.all.collect {|p| [ p.name,p.id ] }, :class => 'form-control'
+.form-group
+  = builder.label :color_id, :class => 'control-label'
+  .controls
+    = builder.select :color_id, Color.all.collect {|p| [ p.name,p.id ] }, :class => 'form-control'
+.form-group
+  = builder.label :feature_ids, :class => 'control-label'
+  .controls
+    = builder.collection_check_boxes :feature_ids, Feature.all, :id, :name, {}, multiple: true
+.form-group    
+  = builder.label :price, :class => 'control-label'
+  .controls
+    = builder.text_field :price, :class => 'form-control'

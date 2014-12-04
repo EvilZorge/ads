@@ -107,4 +107,4 @@ end
 feature_list.each do |name|
   Feature.create(name: name.join(""))
 end
-Car.create(country_id:1, city_id:1, make_id:1, model_id:1, condition_id:1, style_id:1, mileage_id:1, engine_id:1, year_id:1, engine_volume_id:1, transmission_id:1, door_id:1, color_id:1)
+# Car.create(country_id:1, city_id:1, make_id:1, model_id:1, condition_id:1, style_id:1, mileage_id:1, engine_id:1, year_id:1, engine_volume_id:1, transmission_id:1, door_id:1, color_id:1)

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   extend Enumerize
   has_many :advertisments, dependent: :destroy
-  has_many :comments
+  # has_many :comments
   has_many :reviews, class_name: "Review", foreign_key: "assignee_id"
   has_many :feedbacks, class_name: "Review", foreign_key: "user_id"
   devise :database_authenticatable, :registerable,

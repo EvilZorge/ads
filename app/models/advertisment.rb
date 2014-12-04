@@ -2,13 +2,13 @@ class Advertisment < ActiveRecord::Base
   extend Enumerize
   belongs_to :user
   belongs_to :type
-  belongs_to :resource, polymorphic: true, dependent: :destroy
+  has_one :car, dependent: :destroy
   has_many :ads_images, dependent: :destroy
-  has_many :reviews, dependent: :destroy
+  # has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :ads_images,:reject_if => lambda { |p| p['photo'].blank? },
     allow_destroy: true
-  accepts_nested_attributes_for :resource, allow_destroy: true
+  accepts_nested_attributes_for :car, allow_destroy: true
 
   validates :title, presence: true, length: { minimum: 3, maximum: 30 }
   validates :body, presence: true, length: { minimum: 3,  maximum: 180 }

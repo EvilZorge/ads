@@ -10,12 +10,11 @@ class AdvertismentsController < ApplicationController
   end
 
   def new
+    @advertisment.build_car
   end
 
   def create
-    @resource = resource
     binding.pry
-    @advertisment = Advertisment.new()
     if @advertisment.save
       flash[:success] = "Advertisment #{@advertisment.title} was created!"
       redirect_to @advertisment
@@ -84,17 +83,8 @@ class AdvertismentsController < ApplicationController
 
   private
 
-  # def resource
-  #   if params[:advertisment][:car]
-  #     binding.pry
-  #     params[:advertisment][:car] = Car.create(params[:advertisment][:car])
-  #   end
-  # end 
-
   def advertisment_params
-    params.require(:advertisment).permit(:title, :body, :type_id, :user_id, resource_attributes: [:country_id, :city_id, :make_id, :model_id, :style_id,
-     :mileage_id, :year_id, :engine_id, :engine_volume_id, :transmission_id, :door_id, :color_id,:condition_id,:price], ads_images_attributes: [:id, :photo, :_destroy])
+    params.require(:advertisment).permit(:title, :body, :type_id, :user_id, car_attributes: [:country_id, :city_id, :make_id, :model_id, :style_id,
+     :mileage_id, :year_id, :engine_id, :engine_volume_id, :transmission_id, :door_id, :color_id,:condition_id, {feature_ids: []},:price], ads_images_attributes: [:id, :photo, :_destroy])
   end
 end
-# resource: [:country_id, :city_id, :make_id, :model_id, :style_id,
-#     :mileage_id, :year_id, :engine_id, :engine_volume_id, :transmission_id, :door_id, :color_id, {feature_ids: []}, :price],

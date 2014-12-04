@@ -24,19 +24,18 @@ ActiveRecord::Schema.define(version: 20141203092521) do
   end
 
   create_table "advertisments", force: true do |t|
-    t.string   "title",                            null: false
-    t.text     "body",                             null: false
+    t.string   "title",                         null: false
+    t.text     "body",                          null: false
     t.integer  "user_id"
     t.integer  "type_id"
-    t.integer  "resource_id"
-    t.string   "resource_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "state",         default: "sketch"
+    t.string   "state",      default: "sketch"
     t.string   "ban_reason"
   end
 
   create_table "cars", force: true do |t|
+    t.integer "advertisment_id"
     t.integer "make_id"
     t.integer "model_id"
     t.integer "country_id"

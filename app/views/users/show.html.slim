@@ -1,8 +1,29 @@
 - model_class = User
 div class="page-header"
-  h1= @user.email + ' advertisments'
-div class='search'
-  = render :partial => "search_form"
+p
+  strong= model_class.human_attribute_name(:email) + ':'
+  br
+  = @user.email
+p
+  strong= model_class.human_attribute_name(:nickname) + ':'
+  br
+  l= @user.nickname
+p
+  strong Fullname:
+  br
+  l= @user.fullname
+p
+  strong= model_class.human_attribute_name(:role) + ':'
+  br
+  = @user.role
+p
+  strong= model_class.human_attribute_name(:created_at) + ':'
+  br
+  l= @user.created_at
+  
+h4
+  br
+  = @user.nickname.titleize + ' advertisments'
 div 
   - if @user.reviews.any?
     = link_to "User's reviews", user_reviews_path(@user), class: "btn btn-default"

@@ -33,61 +33,61 @@ class Ability
         end
         can [:read, :create, :update], Country
         can :destroy, Country do |country|
-          country.advertisments.blank?
+          country.cars.blank?
           country.cities.blank?
         end
         can [:read, :create, :update], City
         can :destroy, City do |city|
-          city.advertisments.blank?
+          city.cars.blank?
         end
         can [:read, :create, :update], Condition
         can :destroy, Condition do |condition|
-          condition.advertisments.blank?
+          condition.cars.blank?
         end
         can [:read, :create, :update], Style
         can :destroy, Style do |style|
-          style.advertisments.blank?
+          style.cars.blank?
         end
         can [:read, :create, :update], Mileage
         can :destroy, Mileage do |mileage|
-          mileage.advertisments.blank?
+          mileage.cars.blank?
         end
         can [:read, :create, :update], Year
         can :destroy, Year do |year|
-          year.advertisments.blank?
+          year.cars.blank?
         end
         can [:read, :create, :update], Engine
         can :destroy, Engine do |engine|
-          engine.advertisments.blank?
+          engine.cars.blank?
         end
         can [:read, :create, :update], EngineVolume
         can :destroy, EngineVolume do |engine_volume|
-          engine_volume.advertisments.blank?
+          engine_volume.cars.blank?
         end
         can [:read, :create, :update], Transmission
         can :destroy, Transmission do |transmission|
-          transmission.advertisments.blank?
+          transmission.cars.blank?
         end
         can [:read, :create, :update], Door
         can :destroy, Door do |door|
-          door.advertisments.blank?
+          door.cars.blank?
         end
         can [:read, :create, :update], Color
         can :destroy, Color do |color|
-          color.advertisments.blank?
+          color.cars.blank?
         end
         can [:read, :create, :update], Make
         can :destroy, Make do |make|
-          make.advertisments.blank?
+          make.cars.blank?
           make.models.blank?
         end
         can [:read, :create, :update], Model
         can :destroy, Model do |model|
-          model.advertisments.blank?
+          model.cars.blank?
         end
         can [:read, :create, :update], Feature
         can :destroy, Feature do |feature|
-          feature.advertisments.blank?
+          feature.cars.blank?
         end
       end
     end

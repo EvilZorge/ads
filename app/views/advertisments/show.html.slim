@@ -23,6 +23,69 @@ p
   br
   = @advertisment.state
 p
+  strong= model_class.human_attribute_name(:country_id) + ':'
+  br
+  = @advertisment.car.country.name
+p
+  strong= model_class.human_attribute_name(:city_id) + ':'
+  br
+  = @advertisment.car.city.name
+p
+  strong= model_class.human_attribute_name(:make_id) + ':'
+  br
+  = @advertisment.car.make.name
+p
+  strong= model_class.human_attribute_name(:model_id) + ':'
+  br
+  = @advertisment.car.model.name
+p
+  strong= model_class.human_attribute_name(:condition_id) + ':'
+  br
+  = @advertisment.car.condition.name
+p
+  strong= model_class.human_attribute_name(:style_id) + ':'
+  br
+  = @advertisment.car.style.name
+p
+  strong= model_class.human_attribute_name(:mileage_id) + ':'
+  br
+  = @advertisment.car.mileage.name
+p
+  strong= model_class.human_attribute_name(:year_id) + ':'
+  br
+  = @advertisment.car.year.name
+p
+  strong= model_class.human_attribute_name(:engine_id) + ':'
+  br
+  = @advertisment.car.engine.name
+p
+  strong= model_class.human_attribute_name(:engine_volume_id) + ':'
+  br
+  = @advertisment.car.engine_volume.name
+p
+  strong= model_class.human_attribute_name(:transmission_id) + ':'
+  br
+  = @advertisment.car.transmission.name
+p
+  strong= model_class.human_attribute_name(:door_id) + ':'
+  br
+  = @advertisment.car.door.name
+p
+  strong= model_class.human_attribute_name(:color_id) + ':'
+  br
+  = @advertisment.car.color.name
+p
+  strong= model_class.human_attribute_name(:price) + ':'
+  br
+  = @advertisment.car.price
+- if @advertisment.car.features.any?
+  p
+    strong= model_class.human_attribute_name(:features_id) + ':'
+    br
+    - @advertisment.car.features.each do |feature|
+      div
+        = feature.name
+p
   br
     - @advertisment.ads_images.each do |f|
       =' image_tag(f.photo.url(:medium))

@@ -10,7 +10,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'cancancan'
-gem 'mysql2'
 gem 'devise'
 gem 'enumerize'
 gem 'slim-rails'
@@ -23,6 +22,7 @@ gem 'mysql2'
 gem 'thinking-sphinx'
 gem 'ejs'
 gem 'rack-cache'
+gem 'pg'
 
 group :development do
   gem 'better_errors'

@@ -98,6 +98,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    pg (0.17.1)
     polyglot (0.3.5)
     pry (0.10.0)
       coderay (~> 1.1.0)
@@ -224,6 +225,7 @@ DEPENDENCIES
   mysql2
   nested_form
   paperclip
+  pg
   pry
   pry-rails
   rack-cache

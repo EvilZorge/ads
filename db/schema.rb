@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203092521) do
+ActiveRecord::Schema.define(version: 20141207223014) do
 
   create_table "ads_images", force: true do |t|
     t.integer  "advertisment_id"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20141203092521) do
     t.datetime "photo_updated_at"
   end
 
+  add_index "ads_images", ["advertisment_id"], name: "ads_images_advertisment_id_fk", using: :btree
+
   create_table "advertisments", force: true do |t|
     t.string   "title",                         null: false
     t.text     "body",                          null: false
@@ -33,6 +35,9 @@ ActiveRecord::Schema.define(version: 20141203092521) do
     t.string   "state",      default: "sketch"
     t.string   "ban_reason"
   end
+
+  add_index "advertisments", ["type_id"], name: "advertisments_type_id_fk", using: :btree
+  add_index "advertisments", ["user_id"], name: "advertisments_user_id_fk", using: :btree
 
   create_table "cars", force: true do |t|
     t.integer "advertisment_id"
@@ -52,10 +57,28 @@ ActiveRecord::Schema.define(version: 20141203092521) do
     t.string  "price"
   end
 
+  add_index "cars", ["advertisment_id"], name: "cars_advertisment_id_fk", using: :btree
+  add_index "cars", ["city_id"], name: "cars_city_id_fk", using: :btree
+  add_index "cars", ["color_id"], name: "cars_color_id_fk", using: :btree
+  add_index "cars", ["condition_id"], name: "cars_condition_id_fk", using: :btree
+  add_index "cars", ["country_id"], name: "cars_country_id_fk", using: :btree
+  add_index "cars", ["door_id"], name: "cars_door_id_fk", using: :btree
+  add_index "cars", ["engine_id"], name: "cars_engine_id_fk", using: :btree
+  add_index "cars", ["engine_volume_id"], name: "cars_engine_volume_id_fk", using: :btree
+  add_index "cars", ["make_id"], name: "cars_make_id_fk", using: :btree
+  add_index "cars", ["mileage_id"], name: "cars_mileage_id_fk", using: :btree
+  add_index "cars", ["model_id"], name: "cars_model_id_fk", using: :btree
+  add_index "cars", ["style_id"], name: "cars_style_id_fk", using: :btree
+  add_index "cars", ["transmission_id"], name: "cars_transmission_id_fk", using: :btree
+  add_index "cars", ["year_id"], name: "cars_year_id_fk", using: :btree
+
   create_table "cars_features", force: true do |t|
     t.integer "car_id"
     t.integer "feature_id"
   end
+
+  add_index "cars_features", ["car_id"], name: "cars_features_car_id_fk", using: :btree
+  add_index "cars_features", ["feature_id"], name: "cars_features_feature_id_fk", using: :btree
 
   create_table "cities", force: true do |t|
     t.string  "name"
@@ -78,6 +101,9 @@ ActiveRecord::Schema.define(version: 20141203092521) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "comments", ["advertisment_id"], name: "comments_advertisment_id_fk", using: :btree
+  add_index "comments", ["user_id"], name: "comments_user_id_fk", using: :btree
 
   create_table "conditions", force: true do |t|
     t.string "name"
@@ -141,6 +167,9 @@ ActiveRecord::Schema.define(version: 20141203092521) do
     t.datetime "updated_at"
   end
 
+  add_index "reviews", ["assignee_id"], name: "reviews_assignee_id_fk", using: :btree
+  add_index "reviews", ["user_id"], name: "reviews_user_id_fk", using: :btree
+
   create_table "styles", force: true do |t|
     t.string "name"
   end
@@ -186,5 +215,38 @@ ActiveRecord::Schema.define(version: 20141203092521) do
   end
 
   add_index "years", ["name"], name: "index_years_on_name", unique: true, using: :btree
+
+  add_foreign_key "ads_images", "advertisments", name: "ads_images_advertisment_id_fk"
+
+  add_foreign_key "advertisments", "types", name: "advertisments_type_id_fk"
+  add_foreign_key "advertisments", "users", name: "advertisments_user_id_fk", options: ","
+
+  add_foreign_key "cars", "advertisments", name: "cars_advertisment_id_fk", options: ","
+  add_foreign_key "cars", "cities", name: "cars_city_id_fk", options: ","
+  add_foreign_key "cars", "colors", name: "cars_color_id_fk", options: ","
+  add_foreign_key "cars", "conditions", name: "cars_condition_id_fk", options: ","
+  add_foreign_key "cars", "countries", name: "cars_country_id_fk", options: ","
+  add_foreign_key "cars", "doors", name: "cars_door_id_fk", options: ","
+  add_foreign_key "cars", "engine_volumes", name: "cars_engine_volume_id_fk", options: ","
+  add_foreign_key "cars", "engines", name: "cars_engine_id_fk", options: ","
+  add_foreign_key "cars", "makes", name: "cars_make_id_fk", options: ","
+  add_foreign_key "cars", "mileages", name: "cars_mileage_id_fk", options: ","
+  add_foreign_key "cars", "models", name: "cars_model_id_fk", options: ","
+  add_foreign_key "cars", "styles", name: "cars_style_id_fk", options: ","
+  add_foreign_key "cars", "transmissions", name: "cars_transmission_id_fk"
+  add_foreign_key "cars", "years", name: "cars_year_id_fk", options: ","
+
+  add_foreign_key "cars_features", "cars", name: "cars_features_car_id_fk"
+  add_foreign_key "cars_features", "features", name: "cars_features_feature_id_fk", options: ","
+
+  add_foreign_key "cities", "countries", name: "cities_country_id_fk"
+
+  add_foreign_key "comments", "advertisments", name: "comments_advertisment_id_fk"
+  add_foreign_key "comments", "users", name: "comments_user_id_fk", options: ","
+
+  add_foreign_key "models", "makes", name: "models_make_id_fk"
+
+  add_foreign_key "reviews", "users", name: "reviews_assignee_id_fk", column: "assignee_id"
+  add_foreign_key "reviews", "users", name: "reviews_user_id_fk", options: ","
 
 end

@@ -23,6 +23,7 @@ gem 'thinking-sphinx'
 gem 'ejs'
 gem 'rack-cache'
 gem 'pg'
+gem 'immigrant'
 
 group :development do
   gem 'better_errors'

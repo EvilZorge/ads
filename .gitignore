@@ -26,3 +26,6 @@
 /db/sphinx/*
 /config/*.sphinx.conf
 
+# Ignore idea
+/.idea
+

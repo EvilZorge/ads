@@ -4,7 +4,6 @@ class Advertisment < ActiveRecord::Base
   belongs_to :type
   has_one :car, dependent: :destroy
   has_many :ads_images, dependent: :destroy
-  # has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :ads_images,:reject_if => lambda { |p| p['photo'].blank? },
     allow_destroy: true

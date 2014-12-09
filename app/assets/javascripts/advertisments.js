@@ -22,13 +22,13 @@ $(document).ready(function(){
     });
   });
 
-  $("#autocomplete").focus(function() {
-    $(".complete").show();
-  });
+  // $("#autocomplete").focus(function() {
+  //   $(".complete").show();
+  // });
 
-  $("#autocomplete").blur(function() {
-    $(".complete").hide();
-  });
+  // $("#autocomplete").blur(function() {
+  //   $(".complete").hide();
+  // });
 
   $("#country-select").on('change', function() {
     var search = $("#country-select").val();

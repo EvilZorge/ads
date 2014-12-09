@@ -14,7 +14,6 @@ class AdvertismentsController < ApplicationController
   end
 
   def create
-    binding.pry
     if @advertisment.save
       flash[:success] = "Advertisment #{@advertisment.title} was created!"
       redirect_to @advertisment
@@ -54,7 +53,7 @@ class AdvertismentsController < ApplicationController
   end
 
   def search
-    @advertisments = Advertisment.search(conditions: { title: params[:search], type: params[:type], state: 'published' },
+    @advertisments = Advertisment.search(params[:search],conditions: { type: params[:type], state: 'published' },
       star: true)
     render :search
   end

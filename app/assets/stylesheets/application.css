@@ -24,7 +24,6 @@ div.auto_complete {
 }
 
 
-
 div.inline {
   display: inline-block;
 }
@@ -37,9 +36,6 @@ div.content_min {
 }
 
 span.content_title {
-  position: absolute;
-  top: 0;
-  left: 0;
   font-weight: bolder;
   font-size: 16px;
 }

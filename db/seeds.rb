@@ -10,30 +10,35 @@ city_list = [
   ["Brest", 1],
   ["Vitebsk", 1],
   ["Gomel", 1],
-  ["Moscow", 2]
+  ["Moscow", 2],
+  ["Saint Petersburg", 2],
+  ["Siberia", 2],
+  ["Novosibirsk", 2],
+  ["Smolensk", 2],
+  ["Yekaterinburg", 2],
 ];
 
-make_list = [["BMW"],["AUDI"]];
-model_list = [["X6",1],["A8",2]];
-condition_list = [["used"],["new"]];
-style_list = [["test"],["test1"]]
-mileage_list = [["test"],["test1"]]
-year_list = [["test"],["test1"]]
-engine_list = [["test"],["test1"]]
-engine_volume_list = [["test"],["test1"]]
-transmission_list = [["test"],["test1"]]
-door_list = [["test"],["test1"]]
-color_list = [["test"],["test1"]]
-feature_list = [["test"],["test1"]]
+make_list = [["BMW"],["AUDI"],["Mercedes"],["Mazda"],["Toyota"],["Ford"]];
+model_list = [["X6",1],["525",1],["720",1],["A8",2],["A6",2],["80",2],["S350",3],["S500",3],["E220",3],["626",4],["6",4],["3",4],["Avensis",5],["Corolla",5],["Camry",5],["Focus",6],["Escort",6],["Mondeo",6]];
+condition_list = [["used"],["new"],["nearly new"]];
+style_list = [["Convertible"],["Coupe"],["Estate"],["Hatchback"],["SUV"],["Saloon"],["Other"]]
+mileage_list = [["up to 1000 miles"],["up to 5000 miles"],["up to 15000 miles"],["up to 25000 miles"],["up to 50000 miles"],["up to 75000 miles"],["over 75000 miles"],["Other"]]
+year_list = [["up to 1 year old"],["up to 2 years old"],["up to 3 years old"],["up to 5 years old"],["up to 7 years old"],["over 10 years old"],["Other"]]
+engine_list = [["Diesel"],["Electric"],["Hybrid"],["Petrol"],["LPG"],["Other"]]
+engine_volume_list = [["1L-2L"],["2L-3L"],["3L-4L"],["4L-5L"],["Other"]]
+transmission_list = [["Automatic"],["Manual"],["Semi-auto"],["Other"]]
+door_list = [["2 doors"],["3 doors"],["4 doors"],["5 doors"],["Other"]]
+color_list = [["black"],["green"],["yellow"],["red"],["blue"],["brown"],["grey"],["orange"]]
+feature_list = [["Leather"],["Air Conditioning"],["Allow wheels"],["Parktronic"]]
 
 User.create do |u|
   u.email="evilzorge@gmail.com"
   u.password="12345678"
   u.password_confirmation="12345678"
   u.role="admin"
-  u.nickname = "test"
-  u.name = "test"
-  u.surname = "test"
+  u.nickname = "Superadmin"
+  u.name = "Kirill"
+  u.surname = "Chernobai"
 end
 
 User.create do |u|
@@ -41,9 +46,19 @@ User.create do |u|
   u.password="12345678"
   u.password_confirmation="12345678"
   u.role="user"
-  u.nickname = "test1"
-  u.name = "test1"
-  u.surname = "test1"
+  u.nickname = "envoyfromgalaxy"
+  u.name = "Kirill"
+  u.surname = "Chernobai"
+end
+
+User.create do |u|
+  u.email="ghostcrawler@gmail.com"
+  u.password="12345678"
+  u.password_confirmation="12345678"
+  u.role="user"
+  u.nickname = "another_user"
+  u.name = "Test"
+  u.surname = "Test"
 end
 
 Type.create do |u|

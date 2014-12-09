@@ -4,20 +4,20 @@ div class="page-header"
 table#myTable class="table table-striped"
   thead
     tr
+      th= model_class.human_attribute_name(:photo)
       th= model_class.human_attribute_name(:title)
       th= model_class.human_attribute_name(:body)
       th= model_class.human_attribute_name(:user_id)
       th= model_class.human_attribute_name(:type_id)
-      th= model_class.human_attribute_name(:updated_at)
       th=t '.actions', :default => t("helpers.actions")
   tbody
     - @advertisments.each do |advertisment|
       tr
+        td= image_tag(advertisment.ads_images.first.photo.url(:thumb))
         td= advertisment.title
         td= advertisment.body
-        td= advertisment.user.email
+        td= link_to advertisment.user.nickname, user_path(advertisment.user)
         td= advertisment.type.name
-        td=l advertisment.updated_at
         td
           = link_to t('.show', :default => t("helpers.links.show")), advertisment_path(advertisment), :class => 'btn btn-default btn-xs'
           '

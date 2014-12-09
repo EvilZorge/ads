@@ -27,5 +27,5 @@
 /config/*.sphinx.conf
 
 # Ignore idea
-/.idea
+/.idea/
 

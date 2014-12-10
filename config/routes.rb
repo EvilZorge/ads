@@ -16,23 +16,10 @@ Rails.application.routes.draw do
 
   authenticated :user, lambda { |u| u.role == 'admin' } do
     namespace :admin do
+      resources :dashboard, only: :index
       resources :users
-      resources :types, except: :show
-      resources :countries, except: :show
-      resources :cities, except: :show 
-      resources :conditions, except: :show
-      resources :styles, except: :show
-      resources :mileages, except: :show
-      resources :years, except: :show
-      resources :engines, except: :show
-      resources :engine_volumes, except: :show
-      resources :transmissions, except: :show
-      resources :doors, except: :show
-      resources :colors, except: :show
-      resources :makes, except: :show
-      resources :models, except: :show
-      resources :features, except: :show
-
+      resources :types, :countries, :cities, :conditions, :styles, :mileages, :years, :engines, :engine_volumes, :transmissions, 
+                :doors, :colors, :makes, :models, :features, except: :show
       resources :advertisments do
         member do
           put :change_state

@@ -5,7 +5,7 @@
 .form-group
   = builder.label :city_id, :class => 'control-label'
   .controls
-    = builder.select :city_id, "", {:class => 'form-control',:include_blank => 'Select country first',disabled: true}, {id: "city-select" }
+    = builder.select :city_id, "", {:class => 'form-control',:include_blank => 'Select country first'}, {id: "city-select", disabled: true }
 .form-group
   = builder.label :make_id, :class => 'control-label'
   .controls

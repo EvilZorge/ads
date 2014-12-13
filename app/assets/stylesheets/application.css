@@ -53,3 +53,8 @@ span.content_all {
   left: 30%;
   height: 45px;
 }
+
+.output {
+  border: 1px solid grey;
+  position: absolute;
+}

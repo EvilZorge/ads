@@ -3,8 +3,7 @@
     = f.label :title, :class => 'control-label'
     .controls
       = f.text_field :title, :class => 'form-control'
-    = error_span(@advertisment[:title])
-  / - if @advertisment.resource.empty? 
+    = error_span(@advertisment[:title])  
   = f.fields_for :car do |builder|
     = render "car", builder: builder
   .form-group

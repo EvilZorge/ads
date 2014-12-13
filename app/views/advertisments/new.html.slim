@@ -1,4 +1,7 @@
 - model_class = Advertisment
-div class="page-header"
-  h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize
-= render :partial => "form"
+.row
+  .col-lg-2
+  .col-sm-7
+    div class="page-header"
+      h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize  
+    = render :partial => "form"

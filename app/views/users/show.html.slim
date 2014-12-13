@@ -21,15 +21,15 @@ p
   br
   l= @user.created_at
   
-h4
-  br
-  = @user.nickname.titleize + ' advertisments'
 div 
   - if @user.reviews.any?
     = link_to "User's reviews", user_reviews_path(@user), class: "btn btn-default"
   - if @user != current_user
     - if can? :create, Review
-      = link_to "Create review to this user", new_user_review_path(@user), class: "btn btn-default"
+      = link_to "Create review to this user", new_user_review_path(@user), class: "btn btn-primary"
+h4
+  br
+  = @user.nickname.titleize + ' advertisments'
 table#myTable class="table table-striped"
   thead
     tr

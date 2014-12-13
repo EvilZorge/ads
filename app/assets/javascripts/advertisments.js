@@ -17,18 +17,18 @@ $(document).ready(function(){
         $(".complete").html('');
         if (!ads.data.length==0 && search.length>1) {
           $(".complete").html(JST['views/index'](ads));
-        };
-      },
+        }
+      }
     });
   });
 
-  // $("#autocomplete").focus(function() {
-  //   $(".complete").show();
-  // });
+  $("#autocomplete").focus(function() {
+    $(".complete").show();
+  });
 
-  // $("#autocomplete").blur(function() {
-  //   $(".complete").hide();
-  // });
+  $("#autocomplete").blur(function() {
+    $(".complete").hide();
+  });
 
   $("#country-select").on('change', function() {
     var search = $("#country-select").val();
@@ -45,7 +45,7 @@ $(document).ready(function(){
       },
       error: function(xhr, status, error) {
         alert(xhr, status, error);
-      },
+      }
     });
   });
 
@@ -63,8 +63,8 @@ $(document).ready(function(){
         }    
       },
       error: function(xhr, status, error) {
-        alert(xhr, status, error);
-      },
+        alert( xhr, status, error);
+      }
     });
   });
 });

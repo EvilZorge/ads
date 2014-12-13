@@ -11,10 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141207223014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+=======
+ActiveRecord::Schema.define(version: 20141203092521) do
+>>>>>>> master
 
   create_table "ads_images", force: true do |t|
     t.integer  "advertisment_id"
@@ -35,9 +39,44 @@ ActiveRecord::Schema.define(version: 20141207223014) do
     t.datetime "updated_at"
     t.string   "state",      default: "sketch"
     t.string   "ban_reason"
+<<<<<<< HEAD
   end
 
   create_table "cars", force: true do |t|
+=======
+    t.integer  "country_id"
+    t.integer  "city_id"
+    t.integer  "condition_id"
+    t.integer  "style_id"
+    t.integer  "mileage_id"
+    t.integer  "year_id"
+    t.integer  "engine_id"
+    t.integer  "engine_volume_id"
+    t.integer  "door_id"
+    t.integer  "color_id"
+    t.integer  "transmission_id"
+    t.integer  "make_id"
+    t.integer  "model_id"
+    t.string   "price",                               null: false
+  end
+
+  add_index "advertisments", ["city_id"], name: "index_advertisments_on_city_id", using: :btree
+  add_index "advertisments", ["color_id"], name: "index_advertisments_on_color_id", using: :btree
+  add_index "advertisments", ["condition_id"], name: "index_advertisments_on_condition_id", using: :btree
+  add_index "advertisments", ["country_id"], name: "index_advertisments_on_country_id", using: :btree
+  add_index "advertisments", ["door_id"], name: "index_advertisments_on_door_id", using: :btree
+  add_index "advertisments", ["engine_id"], name: "index_advertisments_on_engine_id", using: :btree
+  add_index "advertisments", ["engine_volume_id"], name: "index_advertisments_on_engine_volume_id", using: :btree
+  add_index "advertisments", ["make_id"], name: "index_advertisments_on_make_id", using: :btree
+  add_index "advertisments", ["mileage_id"], name: "index_advertisments_on_mileage_id", using: :btree
+  add_index "advertisments", ["model_id"], name: "index_advertisments_on_model_id", using: :btree
+  add_index "advertisments", ["price"], name: "index_advertisments_on_price", using: :btree
+  add_index "advertisments", ["style_id"], name: "index_advertisments_on_style_id", using: :btree
+  add_index "advertisments", ["transmission_id"], name: "index_advertisments_on_transmission_id", using: :btree
+  add_index "advertisments", ["year_id"], name: "index_advertisments_on_year_id", using: :btree
+
+  create_table "advertisments_features", force: true do |t|
+>>>>>>> master
     t.integer "advertisment_id"
     t.integer "make_id"
     t.integer "model_id"
@@ -53,6 +92,11 @@ ActiveRecord::Schema.define(version: 20141207223014) do
     t.integer "door_id"
     t.integer "color_id"
     t.string  "price"
+  end
+
+  create_table "cars_features", force: true do |t|
+    t.integer "car_id"
+    t.integer "feature_id"
   end
 
   create_table "cars_features", force: true do |t|

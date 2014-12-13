@@ -10,6 +10,7 @@ city_list = [
   ["Brest", 1],
   ["Vitebsk", 1],
   ["Gomel", 1],
+<<<<<<< HEAD
   ["Moscow", 2],
   ["Saint Petersburg", 2],
   ["Siberia", 2],
@@ -30,15 +31,38 @@ transmission_list = [["Automatic"],["Manual"],["Semi-auto"],["Other"]]
 door_list = [["2 doors"],["3 doors"],["4 doors"],["5 doors"],["Other"]]
 color_list = [["black"],["green"],["yellow"],["red"],["blue"],["brown"],["grey"],["orange"]]
 feature_list = [["Leather"],["Air Conditioning"],["Allow wheels"],["Parktronic"]]
+=======
+  ["Moscow", 2]
+];
+
+make_list = [["BMW"],["AUDI"]];
+model_list = [["X6",1],["A8",2]];
+condition_list = [["used"],["new"]];
+style_list = [["test"],["test1"]]
+mileage_list = [["test"],["test1"]]
+year_list = [["test"],["test1"]]
+engine_list = [["test"],["test1"]]
+engine_volume_list = [["test"],["test1"]]
+transmission_list = [["test"],["test1"]]
+door_list = [["test"],["test1"]]
+color_list = [["test"],["test1"]]
+feature_list = [["test"],["test1"]]
+>>>>>>> master
 
 User.create do |u|
   u.email="evilzorge@gmail.com"
   u.password="12345678"
   u.password_confirmation="12345678"
   u.role="admin"
+<<<<<<< HEAD
   u.nickname = "Superadmin"
   u.name = "Kirill"
   u.surname = "Chernobai"
+=======
+  u.nickname = "test"
+  u.name = "test"
+  u.surname = "test"
+>>>>>>> master
 end
 
 User.create do |u|
@@ -46,6 +70,7 @@ User.create do |u|
   u.password="12345678"
   u.password_confirmation="12345678"
   u.role="user"
+<<<<<<< HEAD
   u.nickname = "envoyfromgalaxy"
   u.name = "Kirill"
   u.surname = "Chernobai"
@@ -59,6 +84,11 @@ User.create do |u|
   u.nickname = "another_user"
   u.name = "Test"
   u.surname = "Test"
+=======
+  u.nickname = "test1"
+  u.name = "test1"
+  u.surname = "test1"
+>>>>>>> master
 end
 
 Type.create do |u|
@@ -122,4 +152,8 @@ end
 feature_list.each do |name|
   Feature.create(name: name.join(""))
 end
+<<<<<<< HEAD
 # Car.create(country_id:1, city_id:1, make_id:1, model_id:1, condition_id:1, style_id:1, mileage_id:1, engine_id:1, year_id:1, engine_volume_id:1, transmission_id:1, door_id:1, color_id:1)
+=======
+Advertisment.create(title: "test", body:"testtest", type_id:1, user_id:2, price:"200", country_id:1, city_id:1, make_id:1, model_id:1, condition_id:1, style_id:1, mileage_id:1, engine_id:1, year_id:1, engine_volume_id:1, transmission_id:1, door_id:1, color_id:1)
+>>>>>>> master

@@ -21,6 +21,12 @@ p
   br
   l= @user.created_at
   
+<<<<<<< HEAD
+=======
+h4
+  br
+  = @user.nickname.titleize + ' advertisments'
+>>>>>>> master
 div 
   - if @user.reviews.any?
     = link_to "User's reviews", user_reviews_path(@user), class: "btn btn-default"

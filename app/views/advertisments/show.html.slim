@@ -25,7 +25,6 @@ p
 p
   strong= model_class.human_attribute_name(:country_id) + ':'
   br
-<<<<<<< HEAD
   = @advertisment.car.country.name
 p
   strong= model_class.human_attribute_name(:city_id) + ':'
@@ -84,66 +83,6 @@ p
     strong= model_class.human_attribute_name(:features_id) + ':'
     br
     - @advertisment.car.features.each do |feature|
-=======
-  = @advertisment.country.name
-p
-  strong= model_class.human_attribute_name(:city_id) + ':'
-  br
-  = @advertisment.city.name
-p
-  strong= model_class.human_attribute_name(:make_id) + ':'
-  br
-  = @advertisment.make.name
-p
-  strong= model_class.human_attribute_name(:model_id) + ':'
-  br
-  = @advertisment.model.name
-p
-  strong= model_class.human_attribute_name(:condition_id) + ':'
-  br
-  = @advertisment.condition.name
-p
-  strong= model_class.human_attribute_name(:style_id) + ':'
-  br
-  = @advertisment.style.name
-p
-  strong= model_class.human_attribute_name(:mileage_id) + ':'
-  br
-  = @advertisment.mileage.name
-p
-  strong= model_class.human_attribute_name(:year_id) + ':'
-  br
-  = @advertisment.year.name
-p
-  strong= model_class.human_attribute_name(:engine_id) + ':'
-  br
-  = @advertisment.engine.name
-p
-  strong= model_class.human_attribute_name(:engine_volume_id) + ':'
-  br
-  = @advertisment.engine_volume.name
-p
-  strong= model_class.human_attribute_name(:transmission_id) + ':'
-  br
-  = @advertisment.transmission.name
-p
-  strong= model_class.human_attribute_name(:door_id) + ':'
-  br
-  = @advertisment.door.name
-p
-  strong= model_class.human_attribute_name(:color_id) + ':'
-  br
-  = @advertisment.color.name
-p
-  strong= model_class.human_attribute_name(:price) + ':'
-  br
-  = @advertisment.price
-- if @advertisment.features.any?
-  p
-    strong Features:
-    br
-    - @advertisment.features.each do |feature|
->>>>>>> master
       div
         = feature.name
 p

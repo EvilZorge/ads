@@ -1,14 +1,10 @@
 = form_tag search_admin_advertisments_path, method: :get do
     .form-group
-        = label_tag 'Title and Body'
+        = label_tag 'Title'
         .controls
           = text_field_tag :search, params[:search]
     .form-group
-      = label_tag 'Type'
-      .controls
-        = select_tag :type, options_for_select( Type.all.collect {|p| [ p.name] }), include_blank: true
-    .form-group
       = label_tag 'State'
       .controls
-        = select_tag :state, options_for_select( Advertisment.pluck(:state).uniq), include_blank: true
+        = select_tag :state, options_for_select(Advertisment.pluck(:state).uniq, params[:state]), include_blank: true
     = submit_tag 'Search', :class => "btn btn-primary"

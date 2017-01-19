@@ -53,14 +53,13 @@ class AdvertismentsController < ApplicationController
   end
 
   def search
-    @advertisments = Advertisment.search(params[:search],conditions: { type: params[:type], state: 'published' },
-      star: true)
+    @advertisments = Advertisment.where("title ILIKE ? AND state = 'published'", "%#{params[:search]}%")
     render :search
   end
 
   def autocomplete
     if params[:search]
-      @advertisments = Advertisment.search( conditions: { title: params[:search], state: 'published' }, star: true, max_matches: 5)
+      @advertisments = Advertisment.where("title ILIKE ? AND state = 'published'", "%#{params[:search]}%").limit(5)
       @advertisments = AdvertismentSerializer.serialize_collection(@advertisments)
       render json: {data: @advertisments}
     end

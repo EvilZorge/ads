@@ -13,8 +13,7 @@ class Admin::AdvertismentsController < ApplicationController
   end
 
   def search
-    @advertisments = Advertisment.search(params[:search], conditions: { type: params[:type], state: params[:state]},
-      star: true)
+    @advertisments = Advertisment.where("title ILIKE :title AND state = :state", title: "%#{params[:search]}%", state: params[:state])
     render :index
   end
 

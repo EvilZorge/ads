@@ -1,10 +1,6 @@
-= form_tag search_advertisments_path,  method: :get do
+= form_tag search_advertisments_path, method: :get do
   .form-group
-      = label_tag 'Title and Body'
+      = label_tag 'Title'
       .controls
         = text_field_tag :search, params[:search] , autocomplete: :off
-  .form-group
-    = label_tag 'Type'
-    .controls
-      = select_tag :type, options_for_select( Type.all.collect {|p| [ p.name] }), include_blank: true
   = submit_tag 'Search', :class => "btn btn-primary"
